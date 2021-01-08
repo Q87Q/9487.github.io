@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<head>
+	<title>R6進攻方</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#main1").click(function(){
+    			$("#detail1").slideToggle("slow");
+  			});
+  			$("#main2").click(function(){
+    			$("#detail2").slideToggle("slow");
+  			});
+  			$("#main3").click(function(){
+    			$("#detail3").slideToggle("slow");
+  			});
+  			$("#main4").click(function(){
+    			$("#detail4").slideToggle("slow");
+  			});
+  			$("#main5").click(function(){
+    			$("#detail5").slideToggle("slow");
+  			});
+  			$("#main6").click(function(){
+    			$("#detail6").slideToggle("slow");
+  			});
+  			$("#main7").click(function(){
+    			$("#detail7").slideToggle("slow");
+  			});
+  			$("#main8").click(function(){
+    			$("#detail8").slideToggle("slow");
+  			});
+  			$("#main9").click(function(){
+    			$("#detail9").slideToggle("slow");
+  			});
+  			$("#main10").click(function(){
+    			$("#detail10").slideToggle("slow");
+  			});
+  			
+  		});
+
+  		$(function(){
+			// 預設顯示第一個 Tab
+			var showTab = 0;
+			$('.abgn_tab').each(function(){
+			// 目前的頁籤區塊
+			var $tab = $(this);
+ 
+			var $default_Li = $('ul.tabs li', $tab).eq(showTab).addClass('active');
+			$($default_Li.find('a').attr('href')).siblings().hide();
+ 
+			// 當 li 頁籤被點擊時...
+			// 若要改成滑鼠移到 li 頁籤就切換時, 把 click 改成 mouseover
+			$('ul.tabs li', $tab).click(function() {
+				// 找出 li 中的超連結 href(#id)
+				var $this = $(this),
+					clickTab = $this.find('a').attr('href');
+				// 把目前點擊到的 li 頁籤加上 .active
+				// 並把兄弟元素中有 .active 的都移除 class
+				$this.addClass('active').siblings('.active').removeClass('active');
+				// 淡入相對應的內容並隱藏兄弟元素
+				$(clickTab).stop(false, true).fadeIn().siblings().hide();
+ 
+				return false;
+			}).find('a').focus(function(){
+				this.blur();
+			});
+			});
+		});
+
+
+
+	</script>
+</head>
+<style>
+
+	body{
+		background-image: url('img/smokeeffect.jpg');
+	}
+
+	ul, li{
+		margin: 0;
+		padding: 0;
+		list-style: nono;
+	}/*初始ul, li*/
+	
+	ul.main_head li{
+		display: block;
+		width: 239px;
+		padding: 0px 20px;
+		position: relative; /*可自動相對調整元素位置*/
+		margin-bottom: -1px; /*讓li往下來遮住ul的border-bottom部分*/
+		border: 1px solid #000;	/*外部邊框*/
+
+	}
+
+
+	.detail{
+  		display: none;
+  	}
+	
+	.abgn_tab{
+		clear: left;	/*清除左邊的浮動*/
+		width: 400px;
+		margin: 10px;
+	}
+	ul.tabs{
+		width: 5000px;	/*設定標籤按鍵區域寬*/
+		height: 32px;	/*設定標籤按鍵區域高*/
+		/*border-bottom: 1px solid #000;	按鍵下有邊框與內容框分開*/
+		border-left: 1px solid #000;	/*按鍵左有邊框與網頁邊分開*/
+	}
+	ul.tabs li{
+		float: left;		/*使標籤按鍵浮於內容框上不重疊*/		
+		height: 32px;
+		width: 200px;	  	/**/
+		line-height: 31px;	/**/
+		overflow: hidden; 	/*自動隱藏超出的文字或圖片*/
+		position: relative; /*可自動相對調整元素位置*/
+		margin-bottom: -1px; /*讓li往下來遮住ul的border-bottom部分*/
+		border: 1px solid #000;	/*外部邊框*/
+		border-left: nono;
+		background: yellow;
+		font-size: 25px;
+		font-family: "Microsoft JhengHei", 'arial black', "Microsoft YaHei", "PMingLiU", "DFKai-SB";
+		font-weight: bold;
+		font-style: italic;
+	}
+	ul.tabs li a{
+		display: block;			/*統一以block表示*/
+		padding: 0px 20px;		/*block內距設定*/
+		color: #000;			/*字體顏色*/
+		border: 1px solid #fff;	/*內部邊框*/
+		text-decoration: none;	/*對text做特殊效果,設定無(原設底線消失)*/
+		position: relative;
+	}
+
+	ul.tabs li a:hover{
+		background: #ccc;
+		border-radius: 10px;
+	}/*滑鼠在上設定*/
+
+	ul.tabs li.active{
+		background: #fff;
+		border-bottom: 1px solid #fff;
+	}/*啟動設定*/
+
+	ul.tabs li.active a:hover{
+		background: #fff;
+	}
+
+	div.tab_container{
+		clear: left;			/*消除浮動*/
+		width: 35cm;
+		height: 20cm;
+		border: 5px solid #000;/*設定container的邊界*/
+		border-top: none;		/*邊界設定去除top*/
+		background: #fff;
+	}
+
+
+	div.tab_container .tab_content{
+		background-color: gray;
+		width: 35cm;
+		height: 20cm;
+		padding: 20px;
+	}/*可裝內容高度範圍*/
+	div.tab_container .tab_2{
+		background-color: gray;
+		width: 10cm;
+		height: 10cm;
+		padding: 20px;
+	}/*可裝內容高度範圍*/
+
+	.headcss{
+		display: block;
+		width: 98vw;
+		height: 40vh;
+		background:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi8DxgCgSjL1SUg1sRyVVtkqE1zGRg-UYiiA&usqp=CAU") no-repeat center center;
+		background-size: cover;
+		margin: 20px 20px 20px 20px;
+		border-radius: 5%;
+	}
+	.headtext{
+		background: rgb(255,255,255,0.5);
+		width:98vw;
+		height:40vh;
+		border-radius: 5%;
+	}
+	.headtext .headcss{
+		font-weight: bold;
+		font-size: 100px;
+		text-align: center;
+		line-height: 40vh;
+		color: transparent;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-stroke: 3px #000;
+	}
+	h2{
+		color: #5E2612;
+	}
+	h5{
+		font-style: italic;
+		font-size: 1.5cm;
+	}
+	h6{
+		font-size: 0.9cm;
+	}
+	
+
+
+
+	/*#detail1{
+		position: absolute;
+		top: 10cm;
+		left: 350px;
+	}
+	#detail2{
+		position: absolute;
+		top: 18.5cm;
+		left: 350px;
+	}
+	#detail3{
+		position: absolute;
+		top: 27.5cm;
+		left: 350px;
+	}
+	#detail4{
+		position: absolute;
+		top: 36cm;
+		left: 350px;
+	}
+	#detail5{
+		position: absolute;
+		top: 44.5cm;
+		left: 350px;
+	}
+	#detail6{
+		position: absolute;
+		top: 53.5cm;
+		left: 350px;
+	}
+	#detail7{
+		position: absolute;
+		top: 62cm;
+		left: 350px;
+	}
+	#detail8{
+		position: absolute;
+		top: 70.5cm;
+		left: 350px;
+	}
+	#detail9{
+		position: absolute;
+		top: 79cm;
+		left: 350px;
+	}
+	#detail10{
+		position: absolute;
+		top: 88cm;
+		left: 350px;
+	}*/
+	.video{
+		width:32cm ;
+	}
+	.lvideo{
+		float:left;
+		width: 14cm;
+		height:10cm;
+		margin: 10px 10px 10px 10px;
+	}
+	.rvideo{
+		float:left;
+		width: 14cm
+		height:10cm;
+		margin: 10px 10px 10px 10px;
+	}
+	.basicss{
+		float:left;
+		width: 13cm
+		height:10cm;
+		margin: 10px 10px 10px 10px;
+
+	}
+	.basimg{
+		float:left;
+		width: 13cm
+		height:10cm;
+		margin: 10px 10px 10px 10px;
+	}
+	.basiund{
+		float: left;
+		width: 5cm;
+		height:4cm;
+		margin: 10px 10px 10px 10px;
+
+	}
+	.advertising{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 200px;
+		height: 100px;
+    	border-radius: 50%;
+    	margin: 50px 20px 0px 0px;
+    	transition: all 0.6s;
+	}
+	.advertising:hover{
+		transform: scale(1.2);
+	}
+
+	div.adv_container{
+		height: 50px;
+		border-radius: 50%;
+		text-align: center;
+		padding: 10px 20px;
+		position: relative;
+		font-size: xx-large;
+
+		top:-250px;
+	}
+	<script>
+		var textWrapper = document.querySelecror()
+	</script>
+	.pmove{
+		text-transform: uppercase;
+		letter-spacing: 0.5em;
+		font-weight: 600;
+
+	}
+	.pmove.letter{
+		display: inline-block;
+		line-height: 1em;
+	}
+	.parallelogram1 {
+    width: 80px;
+    height: 50px;
+    background: #ff0000;
+    margin: 100px 50px 0px 0px;
+    transition: all 0.6s;
+    float: right;
+    position: fixed;
+	}
+	.parallelogram1:hover{
+		width: 96px;
+		height: 60px;
+	}
+	.button{	
+		color: white;
+	}
+
+</style>
+
+<body>
+	<div class="headcss">
+		<div class="headtext">
+			<span class="headcss">
+				進攻方幹員
+			</span>		
+		</div>
+	</div>
+	<div style="text-align: right; position:fixed;top: 0cm;right:3cm;"> 
+		<a href="head.html" ><button class="btn btn-default button parallelogram1" style="font-size:20px;" >回首頁</button></a>
+	</div>
+	<div class="advertising">
+		<div class="adv_container">
+			<p id="p_action" class="pmove"><script src="myaction1.js"> </script> <span style="color: orange"><strong><I>防守方</I></strong></span>
+				<a href="defender.html"><img style="width: 5cm; height: 7cm;" src="meme/2a5db8820d212244624506ec867c064b.png"></a>
+		</div>
+		
+
+	</div>
+
+	<div class="">
+		<ul class="main_head">
+			<li>
+				<button id="main1"><img src="img/sledge.svg" width="300" height="300"></button>
+				<div id="detail1" class="detail">					
+					<div class="abgn_tab" >
+						<ul class="tabs">
+							<li><a href="#tab1-1">基本資料</a></li>
+							<li><a href="#tab1-2">專長</a></li>
+							<li><a href="#tab1-3">槍械</a></li>
+							<li><a href="#tab1-4">技能</a></li>
+							<li><a href="#tab1-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab1-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>西莫斯•考登</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>SLEDGE</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>SAS</strong></h2>
+										<br>
+										<h1><b>出生日期:          4月2日(35歲)</b></h1>
+										<h1><b>出生地點:            蘇格蘭,約翰奧格羅茨</b></h1>
+										<br>
+										<h1><b>身高:　　            192公分</b></h1>
+										<h1><b>體重:　　            95公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/4/48/SAS.png/revision/latest?cb=20180112114008" alt="">
+									</div>
+									<div>
+									<img style="height: 18cm;width: 8.8cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/5/55/Sledge_-_Full_Body.png/revision/latest?cb=20180210051516" alt="">	
+									</div>
+								</div>
+	
+							</div>
+							<div id="tab1-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊</b></h1>
+									<h1><b>速度:＊＊</b></h1>
+									<h1><b>難度:＊</b></h1>
+									<h1><b>因為曾為國家級運動選手，有著驚人的耐力、暴發力和臂力而後因其超強臂力成為了SAS的"破門手(爆破棰)"。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab1-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>L85A2</b></h2>
+									<h3>槍枝穩定，瞄準不容易浮動，比起散彈槍更實用</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/slege s.png">
+								</div>
+							</div>
+							<div id="tab1-4" class="tab_content">
+								<h5><b>戰術突破錘: </b></h5>
+									<h2><b>能夠破壞未加強的表面，他擅長創造新的槍線和入口點，對防守方加以干擾。還可以一擊摧毀鐵絲網和Castle的防護板。這個技能最大賣點是可以用來錘殺防守方幹員(另類的審問)。</b></h2>
+								<div>
+									<img src="r6web/sledgegf.gif">
+								</div>
+							</div>
+							<div id="tab1-5" class="tab_content">
+								<div>
+									<h1><b>Sledge算是一個蠻好上手的角色,槍使用起來不會亂飄的很嚴重,技能使用起來也方便,可以打造更多進出空間和達到戰術目的。</b></h1>
+								</div>
+								<div>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/i2Afp46HSWA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+
+			<li>
+				<button id="main2"><img src="img/thatcher.svg" width="300" height="300"></button>
+				<div id="detail2" class="detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab2-1">基本資料</a></li>
+							<li><a href="#tab2-2">專長</a></li>
+							<li><a href="#tab2-3">槍械</a></li>
+							<li><a href="#tab2-4">技能</a></li>
+							<li><a href="#tab2-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab2-1" class="tab_content">
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>麥可•貝克</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>THATCHER</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>SAS</strong></h2>
+										<br>
+										<h1><b>出生日期:          6用22日(56歲)</b></h1>
+										<h1><b>出生地點:            英格蘭，百德弗</b></h1>
+										<br>
+										<h1><b>身高:　　            180公分</b></h1>
+										<h1><b>體重:　　            72公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/4/48/SAS.png/revision/latest?cb=20180112114008" alt="">
+									</div>
+									<div>
+									<img style="height: 18cm;width: 8cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/0/09/Thatcher_-_Full_Body.png/revision/latest?cb=20180210071159" alt="">	
+									</div>
+							</div>				
+							<div id="tab2-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊</b></h1>
+									<h1><b>速度:＊＊</b></h1>
+									<h1><b>難度:＊</b></h1>
+									<h1><b>因為3項實戰經歷皆有與平民接觸並使其免受戰火潑及之經驗所以被認為非常適合擔任SP任務另外也精於CQC和反電子作戰。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab2-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>L85A2</b></h2>
+									<h3>同理sledge，跟AR33比有更穩定及多彈藥量優勢</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/thatcher s.png">
+								</div>
+							</div>
+							<div id="tab2-4" class="tab_content">
+								<h5><b>EG MKO電磁脈衝手榴彈:</b></h5>
+									<h2><b>可以破壞範圍內某些敵方電子設備並使敵方瞄準鏡暫時癱瘓。</b></h2>
+								<div>
+									<img src="r6web/empgf.gif">
+								</div>
+							</div>
+							<div id="tab2-5" class="tab_content">
+								<div>
+									<h1><b>Thatcher的脈衝手榴彈在進攻時具有強大的輔助效益，防守方大部分道具都能靠它來癱瘓10秒，對於加裝了電網的強化牆，也可利用脈衝手榴彈使其失效再搭配燒牆角來爆破。攻擊方裡面最偉大的工具人非他莫屬，真的是非他莫屬，不管有沒有燒牆，EMP通常都會在作戰中很有用，所有的電子設備都會被這東西毀掉，即便是妖怪、邪眼也都會被EMP停擺， 因此當你不知道選甚麼角，選這隻議定對團隊有幫助。</b></h1>
+								</div>
+								<div>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/UF2gbi6PE38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>			
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main3"><img src="img/ash.svg" width="300" height="300"></button>
+				<div id="detail3" class="detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab3-1">基本資料</a></li>
+							<li><a href="#tab3-2">專長</a></li>
+							<li><a href="#tab3-3">槍械</a></li>
+							<li><a href="#tab3-4">技能</a></li>
+							<li><a href="#tab3-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab3-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>伊莉莎•寇恩</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>ASH</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>FBI SWAT</strong></h2>
+										<br>
+										<h1><b>出生日期:          12用24日(33歲)</b></h1>
+										<h1><b>出生地點:            以色列，約路撒冷</b></h1>
+										<br>
+										<h1><b>身高:　　            170公分</b></h1>
+										<h1><b>體重:　　            63公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/1/13/FBI_SWAT.png/revision/latest?cb=20190527131211&path-prefix=ru" alt="">
+									</div>
+									<div>
+									<img style="height: 18cm;width: 6.3cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/4/42/Ash_-_Full_Body.png/revision/latest?cb=20180224040849" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab3-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊</b></h1>
+									<h1><b>速度:＊＊＊</b></h1>
+									<h1><b>難度:＊＊</b></h1>
+									<h1><b>拆彈專家同時也是名精湛的機械維修人員。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab3-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>G36C</b></h2>
+									<h3>兩者差異不大，但R4C缺少高倍鏡，反應要更快</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/ASH S.png">
+								</div>
+							</div>
+							<div id="tab3-4" class="tab_content">
+								<h5><b>M120 輕型步槍用破口彈:</b></h5>
+									<h2><b>可從遠處發射並用爆炸破壞可破壞的物體，若爆破彈直接擊中防守方幹員會固定造成50點傷害且不會有爆炸效果。</b></h2>
+								<div>
+									<img src="r6web/ashgf.gif">
+								</div>
+							</div>
+							<div id="tab3-5" class="tab_content">
+								<div>
+									<h1><b>Ash的優勢在於可以進行遠距離的破門行動，及炸毀未通電的道具她有個綽號【五速無頭怪】，ASH是高手愛角有幾個原因，1.兩把主武器的槍都很優秀，2.三速角體質使她機動力與速度都非常高，3.爆破彈能拿來清除路上的阻礙使她無人能擋，4.她很難被爆頭 。因此如果有高手要玩ASH，誠心建議新手們還是把ASH乖乖讓給老司機帶你們飆車RUSH。</b></h1>
+								</div>
+								<div>
+									<p></p>
+									<h1>跑太快了根本沒畫面</h1>
+								</div>			
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main4"><img src="img/thermite.svg" width="300" height="300"></button>
+				<div id="detail4" class=" detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab4-1">基本資料</a></li>
+							<li><a href="#tab4-2">專長</a></li>
+							<li><a href="#tab4-3">槍械</a></li>
+							<li><a href="#tab4-4">技能</a></li>
+							<li><a href="#tab4-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab4-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>喬丹•崔斯</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>thermite</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>FBI SWAT</strong></h2>
+										<br>
+										<h1><b>出生日期:          3月14日(36歲)</b></h1>
+										<h1><b>出生地點:            德州,普萊諾</b></h1>
+										<br>
+										<h1><b>身高:　　            178公分</b></h1>
+										<h1><b>體重:　　            80公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/1/13/FBI_SWAT.png/revision/latest?cb=20190527131211&path-prefix=ru" alt="">
+									</div>
+									<div>
+									<img style="height: 18cm;width: 6.3cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/6/68/Thermite_-_Full_Body.png/revision/latest?cb=20200325001654" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab4-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊</b></h1>
+									<h1><b>速度:＊＊</b></h1>
+									<h1><b>難度:＊</b></h1>
+									<h1><b>擅於化學與理工項目。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab4-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>556XI</b></h2>
+									<h3>高穩定，也是唯一主力步槍</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/thermite s.png">
+								</div>
+							</div>
+							<div id="tab4-4" class="tab_content">
+								<h5><b>煉獄火 BC-3 放熱炸藥:</b></h5>
+									<h2><b>鋁熱炸藥可用以破壞加固的牆面與天花板。炸藥從啟動到炸毀牆面需約5秒的時間，這段過程有可能會因通電加固牆面而被破壞甚至在未加固的牆上使用鋁熱炸藥，防守方能直接從牆的另一側對其開槍而破壞。</b></h2>
+								<div>
+									<img src="r6web/thermitegf.gif">
+								</div>
+							</div>
+							<div id="tab4-5" class="tab_content">
+								<div>
+									<h1><b>一位可以炸掉強化牆的幹員，在面對強化的天花板或是包的像堡壘的房間時，可以放熱炸彈來進行爆破，因此 除非隊友都沒破牆手段或是危急情況，不建議浪費放熱炸藥於普通牆壁。通常打rank時，會選出Thatcher來進行搭配，此時跟好隊友來燒牆，並配合好emp燒掉重要的點位(此時要小心聽電)，在燒牆前一定要保好自己的性命，否則會很難進攻。</b></h1>
+								</div>
+								<div>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/axWtQhaxRsI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main5"><img src="img/twitch.svg" width="300" height="300"></button>
+				<div id="detail5" class=" detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab5-1">基本資料</a></li>
+							<li><a href="#tab5-2">專長</a></li>
+							<li><a href="#tab5-3">槍械</a></li>
+							<li><a href="#tab5-4">技能</a></li>
+							<li><a href="#tab5-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab5-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>艾曼紐•碧尚</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>TWITCH</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>GIGN</strong></h2>
+										<br>
+										<h1><b>出生日期:          10月12日(28歲)</b></h1>
+										<h1><b>出生地點:            法國,南錫</b></h1>
+										<br>
+										<h1><b>身高:　　            168公分</b></h1>
+										<h1><b>體重:　　            58公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/d/d1/GIGN_patch.png/revision/latest/scale-to-width-down/350?cb=20180608195439" alt="">
+									</div>
+									<div>
+										<img style="height: 18cm;width: 8.2cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/f/f5/Twitch_-_Full_Body.png/revision/latest?cb=20200323110648" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab5-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊</b></h1>
+									<h1><b>速度:＊＊</b></h1>
+									<h1><b>難度:＊＊</b></h1>
+									<h1><b>數理天才，有著超乎常人的邏輯和分析能力同時是名自學出師的機器人專家為機械的運作原理和結構組成所著迷，屬於實作型的機工技師。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab5-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>417</b></h2>
+									<h3>雖然是點發式，但有著高倍鏡的加持和比F2更穩定的性質</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/twitch s.png">
+								</div>
+							</div>
+							<div id="tab5-4" class="tab_content">
+								<h5><b>RSD 第1型無人攻擊機:</b></h5>
+									<h2><b>可以用來破壞敵方電子物品或攻擊人員，每台一開始具有三次電擊的機會，電擊可以無限次衝能，電防守方的幹員時只能造成1點傷害。Twitch的無人攻擊機在操作時幾乎不會產生噪音，因此比普通無人機有較高的隱匿性，但缺點是無法跳躍。</b></h2>
+								<div class="video">
+									<img src="r6web/twitchgf.gif">
+								</div>
+							</div>
+							<div id="tab5-5" class="tab_content">
+								<div>
+									<h1><b>電車可以很好的剋制對方的道具，不適合用來開局探點。在準備階段要先保好自己的車，開局後再找機會偷偷潛入點內攻擊敵方闇鏡，ads，電箱等關鍵道具。電車還有一個特別的玩法，他可以打自己隊友的車，因此部分隊友選到twitch後會在準備階段開始跟你玩鬼抓人的遊戲，嘗試把隊友的車打掉，此時要善用電車不能跳的特性來躲避。</b></h1>
+								</div>
+								<div>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/2VY2kX6-ttg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main6"><img src="img/montagne.svg" width="300" height="300"></button>
+				<div id="detail6" class=" detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab6-1">基本資料</a></li>
+							<li><a href="#tab6-2">專長</a></li>
+							<li><a href="#tab6-3">槍械</a></li>
+							<li><a href="#tab6-4">技能</a></li>
+							<li><a href="#tab6-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab6-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>吉爾•圖雷</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>MONTAGNE</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>GIGN</strong></h2>
+										<br>
+										<h1><b>出生日期:          10月11日(48歲)</b></h1>
+										<h1><b>出生地點:            法國,波爾多</b></h1>
+										<br>
+										<h1><b>身高:　　            190公分</b></h1>
+										<h1><b>體重:　　            90公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/d/d1/GIGN_patch.png/revision/latest/scale-to-width-down/350?cb=20180608195439" alt="">
+									</div>
+									<div>
+										<img style="height: 18cm;width: 9.7cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/0/04/Montagne_-_Full_Body.png/revision/latest?cb=20200323112250" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab6-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊＊</b></h1>
+									<h1><b>速度:＊</b></h1>
+									<h1><b>難度:＊＊</b></h1>
+									<h1><b>精於中近距離與CQC作戰另外對城市作戰也有相當的心得。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab6-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>P9</b></h2>
+									<h3>大盾因持盾關係只有手槍能選，P9子彈多，瞄準浮動低，連射性高</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/montagne s.png">
+								</div>
+							</div>
+							<div id="tab6-4" class="tab_content">
+								<h5><b>堅石:</b></h5>
+									<h2><b>一伸縮護盾，可提供全面性的正面防禦並吸收約80%的爆炸傷害，但開啟時自身無法使用武器。</b></h2>
+								<div class="video">
+									<img src="r6web/montagnegf.gif">
+								</div>
+							</div>
+							<div id="tab6-5" class="tab_content">
+								<div>
+									<h1><b>大盾沒有什麽特別的進攻思路，後面跟個能支援你的隊友就行了。作為一個正面全盾無敵的幹員，你的任務就是獲取敵方信息，然後標出來，給予隊友情報。 在推進的時候，不僅僅要小心陷阱及c4，也要注意後面的隊友，可能一不小心，你就成為隊友的槍下魂。</b></h1>
+								</div>
+								<div class="video">
+									<div class="rvideo">
+										<p>左邊的影片</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/PifD_99IoTY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+									<div class="rvideo">
+										<p>右邊的影片</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/H4u2KYPXAOI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main7"><img src="img/fuze.svg" width="300" height="300"></button>
+					<div id="detail7" class=" detail">
+						<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab7-1">基本資料</a></li>
+							<li><a href="#tab7-2">專長</a></li>
+							<li><a href="#tab7-3">槍械</a></li>
+							<li><a href="#tab7-4">技能</a></li>
+							<li><a href="#tab7-5">使用心得</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab7-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>舒瑞•凱西巴耶夫</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>FUZE</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>Альфа</strong></h2>
+										<br>
+										<h1><b>出生日期:          10月12日(34歲)</b></h1>
+										<h1><b>出生地點:            烏茲別克,撒馬爾罕</b></h1>
+										<br>
+										<h1><b>身高:　　            180公分</b></h1>
+										<h1><b>體重:　　            80公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/b/be/Spetsnaz.png/revision/latest/scale-to-width-down/216?cb=20160103201945" alt="">
+									</div>
+									<div>
+										<img style="height: 18cm;width: 9.3cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/e/ea/Fuze_-_Full_Body.png/revision/latest?cb=20200324004809" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab7-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊＊</b></h1>
+									<h1><b>速度:＊</b></h1>
+									<h1><b>難度:＊</b></h1>
+									<h1><b>專業的工匠和工藝專家。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab7-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>6P41</b></h2>
+									<h3>屬於一種機槍，用高火力來補足瞄準</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/fuze s.png">
+								</div>
+							</div>
+							<div id="tab7-4" class="tab_content">
+								<h5><b>AMP-6『俄羅斯娃娃』:</b></h5>
+									<h2><b>可固定在牆面、地板或Castle的防護板上後朝另一側射出五顆小型手榴彈。</b></h2>
+								<div class="video">
+									<img src="r6web/fuzegf.gif">
+								</div>
+							</div>
+							<div id="tab7-5" class="tab_content">
+								<div>
+									<h1><b>由於有不少玩家在人質模式中因情報不足等因素(或者是惡意TK隊友)在錯誤地點安裝技能，進而誤傷友軍乃至誤殺人質，所以Fuze常被戲稱為「人質救援專家」。這隻角色是一個很極端的存在，用得好的人會清掉點內的各種道具甚至是敵方幹員性命，但用不好的人反而會限制隊友的走位，帶走隊友的生面，是一隻需要與隊友溝通的角色。通常安裝技能的位置都是在點的外側以及樓上的木地板來轟炸。</b></h1>
+								</div>
+								<div class="video">
+									<div class="rvideo">
+										<p>左邊的影片</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/s-FEx7rPt9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+									<div class="rvideo">
+										<p>右邊的影片</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/Sq687y7mupA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main8"><img src="img/glaz.svg" width="300" height="300"></button>
+				<div id="detail8" class=" detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab8-1">基本資料</a></li>
+							<li><a href="#tab8-2">定位</a></li>
+							<li><a href="#tab8-3">槍械</a></li>
+							<li><a href="#tab8-4">技能</a></li>
+							<li><a href="#tab8-5">補充</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab8-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>亞歷山大•謝納維耶夫</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>TACHANKA</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>Альфа</strong></h2>
+										<br>
+										<h1><b>出生日期:          7月2日(30歲)</b></h1>
+										<h1><b>出生地點:            俄羅斯,海參崴</b></h1>
+										<br>
+										<h1><b>身高:　　            178公分</b></h1>
+										<h1><b>體重:　　            79公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/b/be/Spetsnaz.png/revision/latest/scale-to-width-down/216?cb=20160103201945" alt="">
+									</div>
+									<div>
+										<img style="height: 18cm;width: 8.4cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/f/f0/Glaz_-_Full_Body.png/revision/latest?cb=20200323111814" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab8-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊</b></h1>
+									<h1><b>速度:＊＊</b></h1>
+									<h1><b>難度:＊</b></h1>
+									<h1><b>擁有畫家的觀察力和沉著心,使他成為優秀的狙擊手與觀測手。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab8-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>OTS-03</b></h2>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/twitch s.png">
+								</div>
+							</div>
+							<div id="tab8-4" class="tab_content">
+								<h5><b>HDS 折疊式瞄準鏡:</b></h5>
+									<h2><b>為安裝於狙擊步槍上方的熱成像瞄準鏡，可穿過煙霧看見敵人，所有敵人會散發出黃色光芒。</b></h2>
+								<div class="video">
+									<img src="r6web/glazgf.gif">
+								</div>
+							</div>
+							<div id="tab8-5" class="tab_content">
+								<div>
+									<h1><b>GLAZ的槍械和技能優勢讓他是壓製防守方有力的武器，典型的地圖就是飛機場，他擁有整個遊戲少數能擊穿飛機玻璃的槍械，使他站在飛機外就能壓製裡面的防守方。利用自身攜帶的煙霧彈來封煙下包然後架槍掩護隊友下包是這隻角色一個常見的打法，利用自身可以穿透煙霧瞄準來尋找對方進行擊殺並成功掩護隊友。</b></h1>
+								</div>
+								<div>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/XSOJvqlOBw8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main9"><img src="img/blitz.svg" width="300" height="300"></button>
+				<div id="detail9" class=" detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab9-1">基本資料</a></li>
+							<li><a href="#tab9-2">定位</a></li>
+							<li><a href="#tab9-3">槍械</a></li>
+							<li><a href="#tab9-4">技能</a></li>
+							<li><a href="#tab9-5">補充</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab9-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>艾力亞斯•柯茨</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>BLITZ</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>GSG 9</strong></h2>
+										<br>
+										<h1><b>出生日期:          4月2日(37歲)</b></h1>
+										<h1><b>出生地點:            德國,不萊梅</b></h1>
+										<br>
+										<h1><b>身高:　　            175公分</b></h1>
+										<h1><b>體重:　　            75公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/8/8a/GSG_9.png/revision/latest/scale-to-width-down/240?cb=20180426151103" alt="">
+									</div>
+									<div>
+										<img style="height: 21cm;width: 12.6cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/6/6c/Large-blitz.2e74d4b8.png/revision/latest?cb=20171223234918" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab9-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊＊</b></h1>
+									<h1><b>速度:＊＊</b></h1>
+									<h1><b>難度:＊＊＊</b></h1>
+									<h1><b>高學歷知識分子,曾是名田徑選手。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab9-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>P12</b></h2>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/blitz s.png">
+								</div>
+							</div>
+							<div id="tab9-4" class="tab_content">
+								<h5><b>G52 戰術護盾:</b></h5>
+									<h2><b>為一附加閃光裝置的防彈盾，可用來眩盲敵人，在Mute的訊號干擾範圍內無法使用，每次使用之間有7秒的冷卻時間。與其他盾牌幹員不同的是，Blitz手持盾牌時可以將盾牌擋在前方進行衝鋒。</b></h2>
+								<div class="video">
+									<img src="r6web/blitzgf.gif">
+								</div>
+							</div>
+							<div id="tab9-5" class="tab_content">
+								<div>
+									<h1><b>閃盾需要對距離有很好的把握，離得太遠閃不到，太近會被刀。閃盾要盡可能避開長走廊，也要小心拐角。同時在衝刺時對面會打你肩膀跟腿，這是一隻不簡單的角色。曾經問過一位很愛玩閃盾的朋友，如何能玩閃盾，他給了八字諍言「到死之前 ，永不停下」。</b></h1>
+								</div>
+								<div class="video">
+									<div class="rvideo">
+										<p>左邊的影片</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/9M4_7udoVvU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+									<div class="rvideo">
+										<p>右邊的影片</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/pXgCDjKBq9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+			<li>
+				<button id="main10"><img src="img/iq.svg" width="300" height="300"></button>
+				<div id="detail10" class="detail">
+					<div class="abgn_tab" style="">
+						<ul class="tabs">
+							<li><a href="#tab10-1">基本資料</a></li>
+							<li><a href="#tab10-2">定位</a></li>
+							<li><a href="#tab10-3">槍械</a></li>
+							<li><a href="#tab10-4">技能</a></li>
+							<li><a href="#tab10-5">補充</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<div id="tab10-1" class="tab_content">
+								<div>
+									<div class="basicss">
+										<h1><b>特勤幹員姓名</b></h1>
+										<h2><strong>莫妮卡•魏斯</strong></h2>
+										<br>
+										<h1><b>暱稱</b></h1>
+										<h2><strong>IQ</strong></h2>
+										<br>
+										<h1><b>組織</b></h1>
+										<h2><strong>GSG 9</strong></h2>
+										<br>
+										<h1><b>出生日期:          8月1日(38歲)</b></h1>
+										<h1><b>出生地點:            德國,萊比錫</b></h1>
+										<br>
+										<h1><b>身高:　　            175公分</b></h1>
+										<h1><b>體重:　　            70公斤</b></h1>
+									</div>
+									<div class="basimg">
+										<img src="https://static.wikia.nocookie.net/rainbowsix/images/8/8a/GSG_9.png/revision/latest/scale-to-width-down/240?cb=20180426151103" alt="">
+									</div>
+									<div>
+										<img style="height: 18cm;width: 7.8cm;  " class="basiund"src="https://static.wikia.nocookie.net/rainbowsix/images/8/8c/IQ_-_Full_Body.png/revision/latest?cb=20180110054100" alt="">	
+									</div>
+								</div>
+							</div>
+							<div id="tab10-2" class="tab_content">
+								<div>
+									<h1><b>裝甲:＊</b></h1>
+									<h1><b>速度:＊＊＊</b></h1>
+									<h1><b>難度:＊＊＊</b></h1>
+									<h1><b>電子工程技師。</b></h1>
+								</div>
+								<div>
+									<!--放影片-->
+								</div>
+							</div>
+							<div id="tab10-3" class="tab_content">
+								<div>
+									<h1><b>推薦使用槍枝</b></h1>
+									<h2><b>552 COMMANDO</b></h2>
+									<h3>槍枝中規中矩，AUG體積較大有擋住視角的可能</h3>
+								</div>
+								<div>
+									<img style="height: 15cm;width: 31.4cm;" src="r6web/iq s.png">
+								</div>
+							</div>
+							<div id="tab10-4" class="tab_content">
+								<h5><b>RED MK III『幽靈』:</b></h5>
+									<h2><b>可無視障礙物偵測距離20公尺內的敵方電子裝置。但啟動時僅可用手槍。IQ亦可偵測某些正在使用的攜帶型電子設備，如Pulse和Vigil的裝備，甚至是正在使用監視器的防守方幹員手機。</b></h2>
+								<div class="video">
+									<img src="r6web/iqgf.gif">
+								</div>
+							</div>
+							<div id="tab10-5" class="tab_content">
+								<div>
+									<h1><b>IQ 在反制敵方電子儀器、無人機、監視器能力相當強大，掃描儀幾乎能將所有防守方的電子設備掃描出來，相當適合讓新手了解防守方的防禦工事如何建立，以及為何如此建立。這隻角色是一隻很好刷分數的角色，只要常常開著掃描儀你的分數就會不斷的往上提升，她可以探查到敵人的所有陷阱(除了夾子)，雖然她並沒有強勢的進攻技能，但卻能反制許多強大的防守道具(ECHO的車、LESION的蠱……)，當你被他們煩到起笑時，不仿試試拿出IQ來處理</b></h1>
+								</div>
+								<div>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/KlxKHAYHTt4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li><br>
+		</ul>
+	</div>	
+</body>
+</html>
